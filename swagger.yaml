@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Social App
+  description: We can now get our own instagram, facebook and Linkedin followers!
+  version: 1.0.1
+
+
+servers:
+  - url: http://localhost/api/v1
+    description: Just a simple Api learning backend 
+  - url: http://localhost/api/v1
+    description: This is another dummy server url link
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer

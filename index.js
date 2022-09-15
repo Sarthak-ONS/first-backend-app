@@ -5,10 +5,17 @@ const app = express()
 
 const PORT = process.env.PORT || 4000
 
-app.get("/", (req, res) => {
+
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
+app.get("/api/v1/", (req, res) => {
     res.status(200).send("<h1>hello from Sarthak</h1>")
 })
-
 
 app.get("/api/v1/instagram", (req, res) => {
 
@@ -38,7 +45,6 @@ app.get("/api/v1/linkedin", (req, res) => {
 })
 
 
-
 app.get("/api/v1/facebook", (req, res) => {
 
     const instaSocial = {
@@ -57,7 +63,6 @@ app.get("/api/v1/:token", (req, res) => {
         "params": req.params.token
     })
 })
-
 
 
 app.listen(PORT, () => {

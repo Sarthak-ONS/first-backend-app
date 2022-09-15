@@ -6,7 +6,7 @@ info:
 
 
 servers:
-  - url: http://localhost/api/v1
+  - url: http://localhost:4000/api/v1
     description: Just a simple Api learning backend 
   - url: http://localhost/api/v1
     description: This is another dummy server url link
@@ -19,3 +19,70 @@ components:
     BearerAuth:
       type: http
       scheme: bearer
+
+paths:
+  /instagram:
+    get:
+      summary: return followers, following , of a username
+
+      responses:
+        '200':
+          description: Successfully generated output
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type : string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+        
+        '400':
+          description : Bad Request, please correct your url
+    post:
+      summary: return followers, following , of a username on posting something
+
+      responses:
+        '200':
+          description: Successfully generated output
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type : string
+                  followers:
+                    type: string
+                  follows:
+                    type: string
+        
+        '400':
+          description : Bad Request, please correct your url
+
+
+  /{token}:
+    get:
+      description: Please post a username to get params, whatever in paramaters
+      parameters:
+        - name: token
+          default: 5
+          in: path
+          schema:
+            type: string 
+      responses:
+        '200':
+          description: Successfully generated output
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  params:
+                    type : string
+        
+        '400':
+          description : Bad Request, please correct your url

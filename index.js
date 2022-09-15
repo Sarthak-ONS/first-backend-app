@@ -57,10 +57,10 @@ app.get("/api/v1/facebook", (req, res) => {
 })
 
 
-app.get("/api/v1/:token", (req, res) => {
+app.get("/api/v1/:xyz", (req, res) => {
     console.log(req.params.token);
     res.status(200).json({
-        "params": req.params.token
+        "params": req.params.xyz
     })
 })
 
